@@ -1,27 +1,15 @@
-<!-- <div id="root" style="width: 280px; margin: 40px auto; padding: 10px;"></div>
-<script>
-  var lock = new Auth0Lock('{{ env.AUTH0_CLIENT_ID }}', '{{ env.AUTH0_DOMAIN }}', { auth: {
-      redirectUrl: '{{ env.AUTH0_CALLBACK_URL }}'
-    , responseType: 'code'
-    , params: {
-      scope: 'openid'
-    }
-  }});
-  lock.show();
-</script> -->
-
 <div id="root" style="width: 320px; margin: 40px auto; padding: 10px; border-style: dashed; border-width: 1px; box-sizing: border-box;">
     embedded area
 </div>
-<script src="https://cdn.auth0.com/js/lock/11.6.1/lock.min.js"></script>
+<script src="https://cdn.auth0.com/js/lock/11.6.0/lock.min.js"></script>
 <script>
-  var lock = new Auth0Lock('{{ env.AUTH0_CLIENT_ID }}', '{{ env.AUTH0_DOMAIN }}', {
+    var lock = new Auth0Lock('{{{ env.AUTH0_CLIENT_ID }}}', '{{{ env.AUTH0_DOMAIN }}}', {
     container: 'root',
     auth: {
-      redirectUrl: '{{ env.AUTH0_CALLBACK_URL }}',    // If not specified, defaults to the current page 
+      redirectUrl: '{{{ env.AUTH0_CALLBACK_URL }}}',
       responseType: 'token id_token',
       params: {
-        scope: 'openid email'                // Learn about scopes: https://auth0.com/docs/scopes
+        scope: 'openid profile' // Learn about scopes: https://auth0.com/docs/scopes
       }
     }
   });
