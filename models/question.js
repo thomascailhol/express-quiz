@@ -4,7 +4,7 @@ var mongoose = require('mongoose')
 let Answers = mongoose.Schema({
   text: {
     type: String,
-    required: true
+    // required: true
   }
 });
 
@@ -12,9 +12,9 @@ let Answers = mongoose.Schema({
 let Question = mongoose.Schema({
   text: {
     type: String,
-    unique: true,
-    index: true,
-    required: true
+    // unique: true,
+    // index: true,
+    // required: true
   },
   description: {
     type: String

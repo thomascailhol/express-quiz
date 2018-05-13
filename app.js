@@ -33,6 +33,7 @@ dotenv.load();
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const coursesRouter = require('./routes/courses');
+const chaptersRouter = require('./routes/chapters');
 
 // This will configure Passport to use Auth0
 
@@ -89,6 +90,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/courses', coursesRouter);
+app.use('/chapters', chaptersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

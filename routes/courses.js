@@ -32,7 +32,8 @@ router.get('/:id', function(req, res, next) {
     if (course) {
       res.render('courses/show', {
         user: req.user,
-        course: course
+        course: course,
+        chapters: course.chapters
       });
     } else {
       res.redirect('/courses');
