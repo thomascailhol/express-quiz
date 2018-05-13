@@ -5,7 +5,7 @@
 data/*
 
 # Logs
-logss
+logs
 *.log
 npm-debug.log*
 

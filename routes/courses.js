@@ -3,13 +3,13 @@ var router = express.Router();
 const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 let Course = require('../models/course');
 
-/* GET users listing. */
+/* GET courses listing. */
 router.get('/', function(req, res, next) {
     Course.find({}, function(err, courses){
       if (err) {
         console.log(err);
       } else {
-        res.render('courses', {
+        res.render('courses/index', {
           user: req.user,
           courses: courses
         });
@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/new', ensureLoggedIn, function(req, res, next) {
-  res.render('new_course', {
+  res.render('courses/new', {
     user: req.user
   });
 });
@@ -28,7 +28,7 @@ router.get('/:id', ensureLoggedIn, function(req, res, next) {
   console.log(req.params.id);
   Course.findById(req.params.id, function(err, course){
     if (course) {
-      res.render('course', {
+      res.render('courses/show', {
         user: req.user,
         course: course
       });

@@ -34,42 +34,10 @@ router.get(
   }
 );
 
-// router.get('/login',
-//   function(req, res){
-//     res.render('login', { env: env });
-//   });
-
-// router.get('/login', passport.authenticate('auth0', {
-//     clientID: env.AUTH0_CLIENT_ID,
-//     domain: env.AUTH0_DOMAIN,
-//     redirectUri: env.AUTH0_CALLBACK_URL,
-//     responseType: 'code',
-//     scope: 'openid name email picture'
-//   }), (req, res) => {
-//     res.redirect("/");
-//   }
-// );
-
-// router.get('/login', function(req, res) {
-//     res.send('You are on the login page');
-// });
-
 router.get('/logout', function(req, res) {
     req.logout();
   	res.redirect('/');
 });
-
-// router.get('/courses', ensureLoggedIn, function(req, res) {
-//     Course.find({}, function(err, courses){
-//       if (err) {
-//         console.log(err);
-//       } else {
-//         res.render('courses', {
-//           user: req.user
-//         });
-//       }
-//     });
-//  });
 
 router.get('/user', ensureLoggedIn, function(req, res, next) {
     res.render('user', { 
