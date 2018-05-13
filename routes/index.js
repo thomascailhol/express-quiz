@@ -12,7 +12,10 @@ var env = {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { env: env, title: 'Express Quiz' });
+  res.render('index', { 
+    env: env, 
+    title: 'Welcome to Express-Quiz' 
+  });
 });
 
 // Perform the login
@@ -31,46 +34,24 @@ router.get(
   }
 );
 
-// router.get('/login',
-//   function(req, res){
-//     res.render('login', { env: env });
-//   });
-
-// router.get('/login', passport.authenticate('auth0', {
-//     clientID: env.AUTH0_CLIENT_ID,
-//     domain: env.AUTH0_DOMAIN,
-//     redirectUri: env.AUTH0_CALLBACK_URL,
-//     responseType: 'code',
-//     scope: 'openid name email picture'
-//   }), (req, res) => {
-//     res.redirect("/");
-//   }
-// );
-
-// router.get('/login', function(req, res) {
-//     res.send('You are on the login page');
-// });
-
 router.get('/logout', function(req, res) {
     req.logout();
   	res.redirect('/');
 });
 
-router.get('/quizzes', ensureLoggedIn, function(req, res) {
-    //TODO : Need to get quizz array somehow? From Mongo?
-    var quizzesJSON = "[]"
-    var quizzes = JSON.parse(quizzesJSON);
-    res.render('quizzes', {user: req.user, quizzes: quizzes});
- });
-
 router.get('/user', ensureLoggedIn, function(req, res, next) {
-    res.render('user', { env: env, user: req.user });
+    res.render('user', { 
+      env: env, 
+      user: req.user 
+    });
 });
 
 router.get('/callback', 
-	passport.authenticate('auth0', { failureRedirect: '/' }), 
+	passport.authenticate('auth0', { 
+    failureRedirect: '/' 
+  }), 
 	function(req, res) {
-    res.redirect(req.session.returnTo || '/quizzes');
+    res.redirect(req.session.returnTo || '/courses');
 });
 
 module.exports = router;

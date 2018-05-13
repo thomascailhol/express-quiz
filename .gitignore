@@ -1,6 +1,9 @@
 # Environments
 *.env
 
+# local db
+data/*
+
 # Logs
 logs
 *.log

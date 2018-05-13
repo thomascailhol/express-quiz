@@ -10,6 +10,20 @@ const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
 const createError = require('http-errors');
 const mustacheExpress = require('mustache-express');
+const mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost:27017/express-quiz-db');
+let db = mongoose.connection;
+
+// check for db connection
+db.once('open', function(){
+  console.log('Connected to MongoDB');
+});
+
+// check for db errors
+db.on('error', function(error){
+  console.log(error);
+});
 
 // We are using the dotenv library to load our environmental variables from the .env file.
 dotenv.load();
@@ -17,8 +31,10 @@ dotenv.load();
 // Router
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const coursesRouter = require('./routes/courses');
 
 // This will configure Passport to use Auth0
+
 var strategy = new Auth0Strategy({
     domain:       process.env.AUTH0_DOMAIN,
     clientID:     process.env.AUTH0_CLIENT_ID,
@@ -45,6 +61,9 @@ passport.deserializeUser(function(user, done) {
 // Express
 var app = express();
 
+// Bring in models
+let Course = require('./models/course');
+
 // View engine setup
 app.engine('mustache', mustacheExpress());
 app.set('views', path.join(__dirname, 'views'));
@@ -67,6 +86,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Router
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/courses', coursesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
