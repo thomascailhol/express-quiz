@@ -4,7 +4,7 @@ const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 let Course = require('../models/course');
 
 /* GET users listing. */
-router.get('/', ensureLoggedIn, function(req, res, next) {
+router.get('/', function(req, res, next) {
     Course.find({}, function(err, courses){
       if (err) {
         console.log(err);
@@ -16,5 +16,40 @@ router.get('/', ensureLoggedIn, function(req, res, next) {
       }
     });
  });
+
+
+router.get('/new', ensureLoggedIn, function(req, res, next) {
+  res.render('new_course', {
+    user: req.user
+  });
+});
+
+router.get('/:id', ensureLoggedIn, function(req, res, next) {
+  console.log(req.params.id);
+  Course.findById(req.params.id, function(err, course){
+    if (course) {
+      res.render('course', {
+        user: req.user,
+        course: course
+      });
+    } else {
+      res.redirect('/courses');
+    }
+  });
+});
+
+router.post('/create', function(req, res, next) {
+  let course = new Course();
+  course.name = req.body.name;
+  course.description = req.body.description;
+  course.save(function(err){
+    if(err){
+      console.log(err);
+      return;
+    } else {
+      res.redirect('/courses')
+    };
+  });
+});
 
 module.exports = router;

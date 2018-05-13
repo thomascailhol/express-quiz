@@ -83,7 +83,7 @@ router.get('/callback',
     failureRedirect: '/' 
   }), 
 	function(req, res) {
-    res.redirect(req.session.returnTo || '/quizzes');
+    res.redirect(req.session.returnTo || '/courses');
 });
 
 module.exports = router;

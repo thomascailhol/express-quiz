@@ -1,16 +1,18 @@
 <div class="container">
+  <h1>Our awesome courses</h1>
   <div class="row">
     {{#courses}}
     <div class="col-xs-12">
-      <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
+      <div class="card" style="margin-bottom: 20px;">
+        <img class="card-img-top" src="http://via.placeholder.com/1400x150" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">{{name}}</h5>
           <p class="card-text">{{description}}</p>
-          <a href="#" class="btn btn-primary">Start course</a>
+          <a href="/courses/{{id}}" class="btn btn-primary">Start course</a>
         </div>
       </div>
     </div>
     {{/courses}}
+    <a href="/new/{{id}}" class="btn btn-success">Create a new course</a>
   </div>
 </div>
