@@ -1,19 +1,16 @@
 var mongoose = require('mongoose')
 // let chapterSchema = require('../models/chapter')
 
-let Chapters = mongoose.Schema({
-  name: {
+let Answers = mongoose.Schema({
+  text: {
     type: String,
     required: true
-  },
-  description: {
-    type: String
   }
 });
 
 // course schema
-let Course = mongoose.Schema({
-  name: {
+let Question = mongoose.Schema({
+  text: {
     type: String,
     unique: true,
     index: true,
@@ -22,7 +19,7 @@ let Course = mongoose.Schema({
   description: {
     type: String
   },
-  chapters: [Chapters]
+  answers: [Answers]
 });
 
-module.exports = mongoose.model('Course', Course);
+module.exports = mongoose.model('Question', Question);

@@ -14,6 +14,7 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/express-quiz-db');
 let db = mongoose.connection;
+mongoose.set('debug', true);
 
 // check for db connection
 db.once('open', function(){
@@ -63,6 +64,7 @@ var app = express();
 
 // Bring in models
 let Course = require('./models/course');
+let Question = require('./models/question');
 
 // View engine setup
 app.engine('mustache', mustacheExpress());

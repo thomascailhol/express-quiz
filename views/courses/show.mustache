@@ -3,6 +3,11 @@
     <div class="col-xs-12">
       <h1>{{course.name}}</h1>
       <p>{{course.description}}</h1></p>
+      <ul>
+        {{#chapters}}
+          <li>{{chapter.name}}</li>
+        {{/chapters}}
+      </ul>
     </div>
   </div>
 </div>
