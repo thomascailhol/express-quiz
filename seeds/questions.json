@@ -1,0 +1,80 @@
+[
+  {
+    "titre": "Question 1",
+    "description": "Suis-je la bas?",
+    "chapter": {
+      "$ref": "courses",
+      "$id": "ObjectID(1234abcd1234abcd1234abcd)"
+    },
+    "answers": [
+      {
+        "titre": "Oui",
+        "isCorrect": true
+      },
+      {
+        "titre": "Non",
+        "isCorrect": false
+      },
+      {
+        "titre": "Peut-etre",
+        "isCorrect": true
+      },
+      {
+        "titre": "Who knows",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "titre": "Question 2",
+    "description": "Suis-je ici ?",
+    "chapter": {
+      "$ref": "courses",
+      "$id": "ObjectID(1234abcd1234abcd1234abcd)"
+    },
+    "answers": [
+      {
+        "titre": "Oui",
+        "isCorrect": false
+      },
+      {
+        "titre": "Non",
+        "isCorrect": false
+      },
+      {
+        "titre": "Peut-etre",
+        "isCorrect": true
+      },
+      {
+        "titre": "Who knows",
+        "isCorrect": false
+      }
+    ]
+  },
+  {
+    "titre": "Question 3",
+    "description": "Suis-je moi?",
+    "chapter": {
+      "$ref": "courses",
+      "$id": "ObjectID(1234abcd1234abcd1234abcd)"
+    },
+    "answers": [
+      {
+        "titre": "Oui",
+        "isCorrect": false
+      },
+      {
+        "titre": "Non",
+        "isCorrect": true
+      },
+      {
+        "titre": "Peut-etre",
+        "isCorrect": false
+      },
+      {
+        "titre": "Who knows",
+        "isCorrect": false
+      }
+    ]
+  }
+]
