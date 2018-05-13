@@ -1,0 +1,70 @@
+[
+  {
+    "name": "Node.js and MongoDB",
+    "description": "We are learning how to use Mongoose.js",
+    "chapters": [
+      {
+        "_id": {
+          "$oid": "1234abcd1234abcd1234abcd"
+        },
+        "name": "Chapter 1",
+        "description": "Install Mondoose.js"
+      },
+      {
+        "_id": {
+          "$oid": "1234abcd1234abcd1234abc2"
+        },
+        "name": "Chapter 2",
+        "description": "Config Mondoose.js"
+      },
+      {
+        "_id": {
+          "$oid": "1234abcd1234abcd1234abc3"
+        },
+        "name": "Chapter 3",
+        "description": "Query Mondoose.js"
+      },
+      {
+        "_id": {
+          "$oid": "1234abcd1234abcd1234abc4"
+        },
+        "name": "Chapter 4",
+        "description": "Advanced Mondoose.js"
+      }
+    ]
+  },
+  {
+    "name": "Node.js and Express.js",
+    "description": "We are learning how to use Express.js",
+    "chapters": [
+      {
+        "_id": {
+          "$oid": "1234abcd1234abcd1234abc5"
+        },
+        "name": "Chapter 1",
+        "description": "Install Express.js"
+      },
+      {
+        "_id": {
+          "$oid": "1234abcd1234abcd1234abc6"
+        },
+        "name": "Chapter 2",
+        "description": "Config Express.js"
+      },
+      {
+        "_id": {
+          "$oid": "1234abcd1234abcd1234abc7"
+        },
+        "name": "Chapter 3",
+        "description": "Routing Express.js"
+      },
+      {
+        "_id": {
+          "$oid": "1234abcd1234abcd1234abc8"
+        },
+        "name": "Chapter 4",
+        "description": "Advanced Express.js"
+      }
+    ]
+  }
+]
