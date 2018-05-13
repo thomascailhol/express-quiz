@@ -13,12 +13,14 @@ const mustacheExpress = require('mustache-express');
 
 // We are using the dotenv library to load our environmental variables from the .env file.
 dotenv.load();
+console.log('lol');
 
 // Router
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 
 // This will configure Passport to use Auth0
+
 var strategy = new Auth0Strategy({
     domain:       process.env.AUTH0_DOMAIN,
     clientID:     process.env.AUTH0_CLIENT_ID,

@@ -12,7 +12,7 @@ var env = {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { env: env, title: 'Express Quiz' });
+  res.render('index', { env: env, title: 'Welcome to Express-Quiz' });
 });
 
 // Perform the login
