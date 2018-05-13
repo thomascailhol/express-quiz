@@ -19,20 +19,40 @@ router.get('/', function(req, res, next) {
 });
 
 // Perform the login
-router.get(
-  '/login',
-  passport.authenticate('auth0', {
-    clientID: env.AUTH0_CLIENT_ID,
-    domain: env.AUTH0_DOMAIN,
-    redirectUri: env.AUTH0_CALLBACK_URL,
-    audience: 'https://' + env.AUTH0_DOMAIN + '/userinfo',
-    responseType: 'code',
-    scope: 'openid'
-  }),
-  function(req, res) {
-    res.redirect('/');
-  }
-);
+// router.get(
+//   '/login',
+//   passport.authenticate('auth0', {
+//     clientID: env.AUTH0_CLIENT_ID,
+//     domain: env.AUTH0_DOMAIN,
+//     redirectUri: env.AUTH0_CALLBACK_URL,
+//     audience: 'https://' + env.AUTH0_DOMAIN + '/userinfo',
+//     responseType: 'code',
+//     scope: 'openid'
+//   }),
+//   function(req, res) {
+//     res.redirect('/');
+//   }
+// );
+
+router.get('/login',
+  function(req, res){
+    res.render('login', { env: env });
+  });
+
+// router.get('/login', passport.authenticate('auth0', {
+//     clientID: env.AUTH0_CLIENT_ID,
+//     domain: env.AUTH0_DOMAIN,
+//     redirectUri: env.AUTH0_CALLBACK_URL,
+//     responseType: 'code',
+//     scope: 'openid name email picture'
+//   }), (req, res) => {
+//     res.redirect("/");
+//   }
+// );
+
+// router.get('/login', function(req, res) {
+//     res.send('You are on the login page');
+// });
 
 router.get('/logout', function(req, res) {
     req.logout();
