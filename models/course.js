@@ -1,5 +1,4 @@
 var mongoose = require('mongoose')
-// let chapterSchema = require('../models/chapter')
 
 let Chapters = mongoose.Schema({
   name: {
