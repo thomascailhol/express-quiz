@@ -1,17 +1,17 @@
 <div class="container">
-  <h1>Chapters of {{course.name}}</h1>
+  <h1>{{chapter.name}} - {{course.name}}</h1>
   <div class="row">
-    {{#chapters}}
+    <h3>TODO: Fetch questions</h3>
+    {{#questions}}
     <div class="col-xs-12">
       <div class="card" style="margin-bottom: 20px;">
         <img class="card-img-top" src="http://via.placeholder.com/1400x150" alt="Card image cap">
         <div class="card-body">
-          <h5 class="card-title">{{name}}</h5>
+          <h5 class="card-title">{{titre}}</h5>
           <p class="card-text">{{description}}</p>
-          <a href="/chapters/{{id}}?course_id={{course.id}}" class="btn btn-primary">Start course</a>
         </div>
       </div>
     </div>
-    {{/chapters}}
+    {{/questions}}
   </div>
 </div>

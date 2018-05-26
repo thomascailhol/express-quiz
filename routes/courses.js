@@ -1,55 +1,22 @@
 var express = require('express');
 var router = express.Router();
+
 const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
-let Course = require('../models/course');
+var Course = require('../models/course');
 
-/* GET courses listing. */
-router.get('/', function(req, res, next) {
-    Course.find({}, function(err, courses){
-      if (err) {
-        console.log(err);
-      } else {
-        res.render('courses/index', {
-          user: req.user,
-          courses: courses
-        });
-      }
-    });
- });
+// require controllers
+var course_controller = require('../controllers/courseController')
 
+/* GET all courses. */
+router.get('/', course_controller.course_list);
 
-router.get('/new', ensureLoggedIn, function(req, res, next) {
-  res.render('courses/new', {
-    user: req.user
-  });
-});
+/* GET new course form. */
+router.get('/new', course_controller.course_create_get);
 
-router.get('/:id', ensureLoggedIn, function(req, res, next) {
-  console.log(req.params.id);
-  Course.findById(req.params.id, function(err, course){
-    if (course) {
-      res.render('courses/show', {
-        user: req.user,
-        course: course
-      });
-    } else {
-      res.redirect('/courses');
-    }
-  });
-});
+/* POST new course. */
+router.post('/create', course_controller.course_create_post);
 
-router.post('/create', function(req, res, next) {
-  let course = new Course();
-  course.name = req.body.name;
-  course.description = req.body.description;
-  course.save(function(err){
-    if(err){
-      console.log(err);
-      return;
-    } else {
-      res.redirect('/courses')
-    };
-  });
-});
+/* GET course details. */
+router.get('/:id', course_controller.course_detail);
 
 module.exports = router;

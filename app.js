@@ -14,6 +14,7 @@ const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/express-quiz-db');
 let db = mongoose.connection;
+mongoose.set('debug', true);
 
 // check for db connection
 db.once('open', function(){
@@ -32,6 +33,7 @@ dotenv.load();
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const coursesRouter = require('./routes/courses');
+const chaptersRouter = require('./routes/chapters');
 
 // This will configure Passport to use Auth0
 
@@ -63,6 +65,7 @@ var app = express();
 
 // Bring in models
 let Course = require('./models/course');
+let Question = require('./models/question');
 
 // View engine setup
 app.engine('mustache', mustacheExpress());
@@ -87,6 +90,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/courses', coursesRouter);
+app.use('/chapters', chaptersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

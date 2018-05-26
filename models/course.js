@@ -1,7 +1,17 @@
-let mongoose = require('mongoose');
+var mongoose = require('mongoose')
+
+let Chapters = mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  description: {
+    type: String
+  }
+});
 
 // course schema
-let courseSchema = mongoose.Schema({
+let Course = mongoose.Schema({
   name: {
     type: String,
     unique: true,
@@ -10,7 +20,8 @@ let courseSchema = mongoose.Schema({
   },
   description: {
     type: String
-  }
+  },
+  chapters: [Chapters]
 });
 
-let Course = module.exports = mongoose.model('Course', courseSchema);
+module.exports = mongoose.model('Course', Course);
